@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://y0rilnv16wk8"]
+
+[ext_resource type="PackedScene" uid="uid://ifhsp7cwm007" path="res://background.tscn" id="1_u0fa4"]
+[ext_resource type="Texture2D" uid="uid://bdds531s2pxur" path="res://Senzanome.png" id="2_uvibm"]
+[ext_resource type="Script" path="res://TouchScreenButton.gd" id="3_w23ib"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_u0fa4")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 184.0
+offset_right = 116.0
+offset_bottom = 207.0
+scale = Vector2(5.25, 5.36365)
+text = "GAMEOVER"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 136.0
+offset_top = 328.0
+offset_right = 197.0
+offset_bottom = 351.0
+scale = Vector2(5, 4.1154)
+text = "riprova:"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(232, 448)
+scale = Vector2(1, 1.1)
+texture_normal = ExtResource("2_uvibm")
+action = "Start"
+script = ExtResource("3_w23ib")

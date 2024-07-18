@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://utkk28ftnuid"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_qb4fw"]
+[ext_resource type="Texture2D" uid="uid://bdds531s2pxur" path="res://Senzanome.png" id="2_gwbcj"]
+[ext_resource type="Texture2D" uid="uid://vw61x0tipges" path="res://unitytut-pipe.png" id="4_51kty"]
+[ext_resource type="Script" path="res://CharacterBody2D2.gd" id="4_xivvy"]
+[ext_resource type="PackedScene" uid="uid://ifhsp7cwm007" path="res://background.tscn" id="5_r8a7v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lbql0"]
+radius = 16.0
+height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdbld"]
+size = Vector2(533, 2186)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hjxg"]
+size = Vector2(533, 2186)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
+position = Vector2(304, 448)
+scale = Vector2(2, 2)
+script = ExtResource("1_qb4fw")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.55)
+texture = ExtResource("2_gwbcj")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_lbql0")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("5_r8a7v")]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["ENEMY"]]
+position = Vector2(-8, 56)
+gravity_scale = 0.0
+script = ExtResource("4_xivvy")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(-128.05, -40.1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_51kty")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(-120.049, 1067.47)
+rotation = 3.14159
+scale = Vector2(0.3, 0.427698)
+texture = ExtResource("4_51kty")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-128.05, -40.1)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_cdbld")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-120.049, 927.9)
+rotation = -3.14159
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_2hjxg")
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]

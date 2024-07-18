@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://l8s88c3d7ija"]
+
+[ext_resource type="PackedScene" uid="uid://ifhsp7cwm007" path="res://background.tscn" id="1_16vbt"]
+[ext_resource type="Texture2D" uid="uid://bdds531s2pxur" path="res://Senzanome.png" id="2_sj6t0"]
+[ext_resource type="Script" path="res://TouchScreenButton.gd" id="3_1qggu"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-16, 0)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_16vbt")]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(272, 408)
+scale = Vector2(1, 1.1)
+texture_normal = ExtResource("2_sj6t0")
+action = "Start"
+script = ExtResource("3_1qggu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 120.0
+offset_top = 344.0
+offset_right = 371.0
+offset_bottom = 367.0
+scale = Vector2(1.5375, 2.0291)
+text = "Tocca l'Uccellino per cominciare:"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 226.0
+offset_bottom = 175.0
+scale = Vector2(2.81515, 3.70586)
+text = "FLAPPY BURP REMASTERED"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 237.0
+offset_right = 346.0
+offset_bottom = 260.0
+scale = Vector2(1.56453, 1.48224)
+text = "(mobile edition)"
